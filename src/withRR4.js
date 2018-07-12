@@ -27,6 +27,10 @@ export const withRR4 = () => {
             default: PropTypes.string //if the path does not match, then use this as the selected
         }
 
+        static defaultProps = {
+            branchOnlyPaths = [];
+        }
+
         static contextTypes = {
             router: PropTypes.shape({
                 history: PropTypes.object.isRequired,
@@ -60,10 +64,13 @@ export const withRR4 = () => {
 
         onItemSelection = (itemId) => {
             const { history } = this.context.router;
-
+            const {branchOnlyPaths} = this.props;
             //do not push history if the resulting click is the same as the current id
             const { selected } = this.state;
 
+            if (branchOnlyPaths).indexOf(itemId)!== -1) {
+                return;
+            }
             if ( itemId !== selected ) {
                 history.push(`/${itemId}`);
             }
