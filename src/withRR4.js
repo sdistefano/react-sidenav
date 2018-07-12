@@ -68,7 +68,7 @@ export const withRR4 = () => {
             //do not push history if the resulting click is the same as the current id
             const { selected } = this.state;
 
-            if (branchOnlyPaths).indexOf(itemId)!== -1) {
+            if ((branchOnlyPaths).indexOf(itemId)!== -1) {
                 return;
             }
             if ( itemId !== selected ) {
